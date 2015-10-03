@@ -5,13 +5,28 @@
 	</head>
 
 	<body>
-		Bill: <input id="bill" type="int"/>
+		<font color="green">Bill </font>
 		<br>
-		Tip %: <input id="tip" type="int"/>
+		<input id="bill" type="int"/>
 		<br>
-		Number of people: <input id="numberOfPeople" type="int"/>
+		<font color="red">Tip % </font>
 		<br>
-		<button>Calculate</button>
+		<input id="tip" type="int"/>
+		<br>
+		<font color="blue">Number of people </font>
+		<br>
+		<input id="numberOfPeople" type="int"/>
+		<br>
+		<br>
+		<button><b>Calculate</b></button>
+		<p>
+			<span id="tipDisplay">Tip per person:</span>
+		</p>
+		<p>
+			<span id="totalDisplay">Total per person:</span>
+		</p>
+		<p id="message">&nbsp;
+		</p>
 
 		<script>
 
@@ -19,11 +34,14 @@
 		  	var bill = $("input#bill").val();
 		  	var tipPercent = $("input#tip").val();
 		  	var numOfPeople = $("input#numberOfPeople").val();
-		  	var tip = (tipPercent/100.0 * bill)/numOfPeople
-		  	var total = (bill/numOfPeople) + tip
-		  	var msg = "The tip per person is $" + tip + ", making it a total of $" + total + " per person."
+		  	var tip = (tipPercent/100.0 * bill)/numOfPeople;
+		  	var total = (bill/numOfPeople) + tip;
+		  	var msg = "The tip per person is $" + tip + ", making it a total of $" + total + " per person.";
 
-		  	alert(msg);
+		  	$("#tipDisplay").text("Tip per person: $" + tip);
+		  	$("#totalDisplay").text("Total per person: $" + total);
+		  	$("#message").text(msg);
+
 		  });
 		</script>
 
