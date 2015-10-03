@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</head>
+
+	<body>
+		Bill: <input id="bill" type="int"/>
+		<br>
+		Tip %: <input id="tip" type="int"/>
+		<br>
+		Number of people: <input id="numberOfPeople" type="int"/>
+		<br>
+		<button>Calculate</button>
+
+		<script>
+
+		  $("button").click(function(){
+		  	var bill = $("input#bill").val();
+		  	var tipPercent = $("input#tip").val();
+		  	var numOfPeople = $("input#numberOfPeople").val();
+		  	var tip = (tipPercent/100.0 * bill)/numOfPeople
+		  	var total = (bill/numOfPeople) + tip
+		  	var msg = "The tip per person is $" + tip + ", making it a total of $" + total + " per person."
+
+		  	alert(msg);
+		  });
+		</script>
+
+	</body>
+
+</html>
