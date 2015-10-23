@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tic Tac Toe</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<style>
+			html, body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+			#backdrop {
+				background-color: black;
+				height: 100%;
+				width: 100%;
+				display:-webkit-flex;
+				display:flex;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+			}
+			#grid {
+				display:table;
+			}
+			.row {
+				display:table-row;
+			}
+			.blank {
+				display: table-cell;
+				width: 100px;
+				height: 100px;
+				background-color: white;
+				border: thin solid grey;
+			}
+			.x {
+				display: table-cell;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				border: thin solid grey;
+			}
+			.o {
+				display: table-cell;
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				border: thin solid grey;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="backdrop">
+			<div class="grid">
+				<div class="row">
+					<div id ="tl" class="blank"></div>
+					<div id ="tm" class="blank"></div>
+					<div id ="tr" class="blank"></div>
+				</div>
+				<div class="row">
+					<div id ="ml" class="blank"></div>
+					<div id ="mm" class="blank"></div>
+					<div id ="mr" class="blank"></div>
+				</div>
+				<div class="row">
+					<div id ="bl" class="blank"></div>
+					<div id ="bm" class="blank"></div>
+					<div id ="br" class="blank"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var turn = "x"
+			$("div.blank").click(function(e) {
+				var target = $(e.currentTarget);
+				target.removeClass("blank");
+				target.addClass(turn);
+				if (turn == "x") {
+					turn = "o"
+				} else {
+					turn = "x"
+				}
+				//determine who wins or if it is a tie: (there are eight ways to win.)
+			})
+		</script>
+	</body>
+</html>
