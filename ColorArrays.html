@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<style>
+			#purple {
+				color:purple;
+			}
+			#red {
+				color:red;
+			}
+			#green {
+				color:green;
+			}
+			#black {
+				color:black;
+			}
+			#blue {
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+		</ul>
+		<script>
+			var x=0
+			var array=["purple","red","green","black","blue"];
+			while(x<5){
+				$("ul").append("<li id="+array[x]+">"+array[x]+"</li>");
+				x++;
+			}
+		</script>
+	</body>
+</html>

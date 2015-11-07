@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<title>Closest To Zero</title>
+	</head>
+	<body>
+		<p>
+			Type in a number
+		</p>
+		<input id="1st" type="int">
+		<p>
+			And another one
+		</p>
+		<input id="2nd" type="int">
+		<br>
+		<button>Find Which Is Closest To Zero</button>
+		<p id="message"></p>
+		<script>
+			$("button").click(function(){
+				var First = $("#1st").val();
+				var Second = $("#2nd").val();
+				var FirstAbs = Math.abs(First);
+				var SecondAbs =  Math.abs(Second);
+				var Closest = "first";
+				if (FirstAbs>SecondAbs){
+					Closest = "the second number.";
+				} else {
+					if (FirstAbs<SecondAbs){
+						Closest = " the first number.";
+					} else {
+						Closest = "neither number because the numbers are equally close to zero."
+					}
+				}
+				var msg = "The number closer to zero is "+Closest;
+				$("#message").text(msg);
+			});
+		</script>
+	</body>
+</html>
