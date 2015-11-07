@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Chutes and Ladders</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</head>
+	<body>
+		<button id="roll"><b>Roll The Die</b></button>
+		<p>Turn: <strong>1</strong></p>
+		<p id="messageSlot"></p>
+		<br>
+		<br>
+		<p id="messageSlot2"></p>
+		<br>
+		<button id="playAgain"><b>Start Over</b></button>
+		<script>
+			var space = 0;
+			var turn = "1";
+			var win = "";
+			var snake = "";
+			var ladder = "";
+			$("#roll").click(function(){
+				turn++;
+				var roll = Math.floor((Math.random() * 6) + 1);
+				if ((space + roll)<25){
+					space = space + roll;
+				} else {
+					if ((space + roll)==25){
+						space = space + roll;
+						win = " and you win!"
+					}
+				}
+				if (space==17){
+					space=23;
+					ladder="Ladder!";
+				} else {
+					ladder="";
+				}
+				if (space==20){
+					space=4;
+					snake="Snake!";
+				} else {
+					snake="";
+				}
+				$("strong").text(turn);
+				var msg = "You rolled a "+roll+" and are now on space "+space+win;
+				$("#messageSlot").text(msg);
+				$("#messageSlot2").text(snake+ladder);
+			})
+			$("#playAgain").click(function(){
+				turn="1";
+				space = 0;
+				win = "";
+				$("strong").text(turn);
+			})
+		</script>
+	</body>
+</html>
