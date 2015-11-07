@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Bingo!</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<style>
+			html, body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+			#backdrop {
+				background-color: black;
+				height: 100%;
+				width: 100%;
+				display:-webkit-flex;
+				display:flex;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+			}
+			#grid {
+				display:table;
+			}
+			.row {
+				display:table-row;
+			}
+			.open {
+				display: table-cell;
+				width: 50px;
+				height: 50px;
+				background-color: white;
+				border: thin solid black;
+			}
+			.covered {
+				display: table-cell;
+				width: 50px;
+				height: 50px;
+				background-color: red;
+				border: thin solid black;
+			}
+			.free {
+				display: table-cell;
+				width: 50px;
+				height: 50px;
+				background-color: purple;
+				border: thin solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<p>This game is for two players</p>
+		<br>
+		<div class="backdrop">
+			<div class="grid">
+				<div class="row">
+					<!--numbers are up to 50:B is 1-10, I is 11-20, N is 21-30, G is 31-40, and O is 41-50-->
+					<p>B</p>
+					<div id ="7" class="open"></div>
+					<div id ="3" class="open"></div>
+					<div id ="5" class="open"></div>
+					<div id ="9" class="open"></div>
+					<div id ="1" class="open"></div>
+				</div>
+				<div class="row">
+					<p>I</p>
+					<div id ="12" class="open"></div>
+					<div id ="15" class="open"></div>
+					<div id ="20" class="open"></div>
+					<div id ="11" class="open"></div>
+					<div id ="13" class="open"></div>
+				</div>
+				<div class="row">
+					<p>N</p>
+					<div id ="26" class="open"></div>
+					<div id ="24" class="open"></div>
+					<div id ="freep1" class="free"></div>
+					<div id ="29" class="open"></div>
+					<div id ="21" class="open"></div>
+					<button id="free1">Use Free Play</button>
+				</div>
+				<div class="row">
+					<p>G</p>
+					<div id ="32" class="open"></div>
+					<div id ="37" class="open"></div>
+					<div id ="36" class="open"></div>
+					<div id ="35" class="open"></div>
+					<div id ="40" class="open"></div>
+				</div>
+				<div class="row">
+					<p>O</p>
+					<div id ="44" class="open"></div>
+					<div id ="47" class="open"></div>
+					<div id ="48" class="open"></div>
+					<div id ="43" class="open"></div>
+					<div id ="45" class="open"></div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<button id="getnum"><b>Get the number</b></button>
+		<p id="numspot"></p>
+		<br>
+		<div class="backdrop">
+			<div class="grid">
+				<div class="row">
+					<p>B</p>
+					<div id ="6" class="open"></div>
+					<div id ="2" class="open"></div>
+					<div id ="4" class="open"></div>
+					<div id ="10" class="open"></div>
+					<div id ="8" class="open"></div>
+				</div>
+				<div class="row">
+					<p>I</p>
+					<div id ="19" class="open"></div>
+					<div id ="17" class="open"></div>
+					<div id ="16" class="open"></div>
+					<div id ="12" class="open"></div>
+					<div id ="14" class="open"></div>
+				</div>
+				<div class="row">
+					<p>N</p>
+					<div id ="27" class="open"></div>
+					<div id ="23" class="open"></div>
+					<div id ="freep2" class="free"></div>
+					<div id ="30" class="open"></div>
+					<div id ="22" class="open"></div>
+					<button id="free2">Use Free Play</button>
+				</div>
+				<div class="row">
+					<p>G</p>
+					<div id ="33" class="open"></div>
+					<div id ="31" class="open"></div>
+					<div id ="39" class="open"></div>
+					<div id ="34" class="open"></div>
+					<div id ="38" class="open"></div>
+				</div>
+				<div class="row">
+					<p>O</p>
+					<div id ="49" class="open"></div>
+					<div id ="42" class="open"></div>
+					<div id ="50" class="open"></div>
+					<div id ="46" class="open"></div>
+					<div id ="41" class="open"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$("#free1").click(function(){
+				$("#freep1").removeClass("free");
+				$("#freep1").addClass("covered");
+			})
+			$("#free2").click(function(){
+				$("#freep2").removeClass("free");
+				$("#freep2").addClass("covered");
+			})
+			$("#getnum").click(function(){
+				var num = Math.floor((Math.random() * 50) + 1);
+				$("#" + num).removeClass("open");
+				$("#" + num).addClass("covered");
+				var square;
+				if (num<11){
+					square="B"+num;
+				} else {
+					if (num<21){
+						square="I"+num;
+					} else {
+						if (num<31){
+							square="N"+num;
+						} else {
+							if (num<41){
+								square="G"+num;
+							} else {
+								square="O"+num;
+							}
+						}
+					}
+				}
+				$("#numspot").text(square);
+			})
+		</script>
+	</body>
+</html>
